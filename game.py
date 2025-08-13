@@ -60,6 +60,7 @@ font_scoreboard = pg.font.Font("fonts/PressStart2P-Regular.ttf", 20)
 running = True
 tick = 0
 score = 0
+kills = 0
 while running:
 
     ## Event loop  (handle keypresses etc.) ##
@@ -93,7 +94,14 @@ while running:
 
             elif event.key == pg.K_RIGHT:
                 right_pressed = False 
-    
+        
+    if kills==10:
+        for i in range(5):
+            alien1 = {'x': 50*i + 50 , 'y': 0}
+            alien2 = {'x': 50*i + 50, 'y': 50}
+            aliens.append(alien1)
+            aliens.append(alien2)
+            kills=0
 
     ## Updating (movement, collisions, etc.) ##
 
@@ -132,16 +140,17 @@ while running:
                     alien['y'] < projectile['y'] + projectile_h):
 
                     # Alien is hit
+                    kills = kills + 1
                     projectiles.remove(projectile)
                     #aliens.remove(alien)
-                    alien['y'] = 50
+                    alien['y'] = -10
 
                     score=score+10
 
 
                     # No further aliens can be hit by this projectile 
                     # so skip to the next projectile 
-                    break
+                    break 
 
     # Firing (spawning new projectiles)
     if projectile_fired:
