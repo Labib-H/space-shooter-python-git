@@ -133,8 +133,11 @@ while running:
 
                     # Alien is hit
                     projectiles.remove(projectile)
-                    aliens.remove(alien)
+                    #aliens.remove(alien)
+                    alien['y'] = 50
+
                     score=score+10
+
 
                     # No further aliens can be hit by this projectile 
                     # so skip to the next projectile 
@@ -168,6 +171,8 @@ while running:
     for projectile in projectiles:
         rect = (projectile['x'], projectile['y'], projectile_w, projectile_h)
         pg.draw.rect(screen, (255, 0, 0), rect) 
+
+   
 
     # Scoreboard
     text = font_scoreboard.render(f"{score:04d}", True, (255,255,255))
