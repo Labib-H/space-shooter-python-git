@@ -49,7 +49,7 @@ right_pressed = False
 
 # Sound: weapon / laser 
 # https://sfxr.me/#34T6Pm25W5VunHtL14gUxhLx6MqNduzaeRPcUbqtT4RN55w6nP9NipaUrx5ZBBvohWwXgMrd5BS2e7HwRwEVyzmKM3FV8LiU7Gh5ob2VvvMi6ftqdhbVB54ZM 
-sound_laser = pg.mixer.Sound("sounds/laser.wav")
+sound_laser = pg.mixer.Sound("sounds/cannon-shot-14799.mp3")
 
 # Font for scoreboard
 # https://fonts.google.com/specimen/Press+Start+2P/about
@@ -134,6 +134,7 @@ while running:
                     # Alien is hit
                     projectiles.remove(projectile)
                     aliens.remove(alien)
+                    score=score+10
 
                     # No further aliens can be hit by this projectile 
                     # so skip to the next projectile 
