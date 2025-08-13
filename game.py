@@ -142,8 +142,8 @@ while running:
                     # Alien is hit
                     kills = kills + 1
                     projectiles.remove(projectile)
-                    #aliens.remove(alien)
-                    alien['y'] = -10
+                    aliens.remove(alien)
+                    #alien['y'] = -10
 
                     score=score+10
 
