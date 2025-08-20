@@ -55,7 +55,42 @@ sound_laser = pg.mixer.Sound("sounds/cannon-shot-14799.mp3")
 # Font for scoreboard
 # https://fonts.google.com/specimen/Press+Start+2P/about
 font_scoreboard = pg.font.Font("fonts/PressStart2P-Regular.ttf", 20)
+class Aliens:
 
+    def __init__(self, x, y, speed, img):
+        self.aliens = []
+        self.x = x
+        self.y = y
+        self.speed = speed
+        self.img = img
+
+
+def wave_fill(list,n):
+    for i in range(n):
+        list.append(Aliens(x=50+i*50,y=100,speed=3))
+
+def showListInfo(list):
+        for element in list:
+            print(f"(x = {element.x} , y = {element.y})")
+
+            
+class Alienwaves:
+    def __init__(self,n):
+            self.list = self.__createWave(n) 
+
+    def __createWave(self,n):
+        list = []
+        for i in range(n):
+            list.append(Aliens(x=50+i*50,y=100,speed=3))
+        return list
+    
+    def move(self):
+        for element in self.list:
+            element.move()
+    
+    def showInfo(self):
+        for element in self.list:
+            print(f"(x = {element.x} , y = {element.y})")
 
 ### Game loop ###
 running = True
@@ -97,21 +132,11 @@ while running:
                 right_pressed = False 
 
 
-
-    
-    if kills == 10:
-        for i in range(5):
-            wavealien1 = {'x': 50*i + 50, 'y': 0}
-            wavealien2 = {'x': 50*i + 50, 'y': 50}
-            aliens.append(wavealien1)
-            aliens.append(wavealien2)
-        kills = 0
-
     ## Updating (movement, collisions, etc.) ##
 
     # Alien
     for alien in aliens:
-        alien ['y'] += 1
+        alien['y'] += 1
 
 
     # Spaceship
