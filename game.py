@@ -4,6 +4,7 @@
 import pygame as pg
 
 
+
 ### Setup ###
 pg.init()
 clock = pg.time.Clock()
@@ -94,20 +95,24 @@ while running:
 
             elif event.key == pg.K_RIGHT:
                 right_pressed = False 
-        
-    if kills==10:
+
+
+
+    
+    if kills == 10:
         for i in range(5):
-            alien1 = {'x': 50*i + 50 , 'y': 0}
-            alien2 = {'x': 50*i + 50, 'y': 50}
-            aliens.append(alien1)
-            aliens.append(alien2)
-            kills=0
+            wavealien1 = {'x': 50*i + 50, 'y': 0}
+            wavealien2 = {'x': 50*i + 50, 'y': 50}
+            aliens.append(wavealien1)
+            aliens.append(wavealien2)
+        kills = 0
 
     ## Updating (movement, collisions, etc.) ##
 
     # Alien
     for alien in aliens:
-        alien['y'] += 1
+        alien ['y'] += 1
+
 
     # Spaceship
     if left_pressed:
